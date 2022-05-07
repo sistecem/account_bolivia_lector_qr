@@ -68,6 +68,14 @@ class account_bolivia_lector_qr(models.Model):
                                             r.invoice_date = ""
                                             # raise ValidationError('Error con la Fecha')
                         try:
+                            r.total = partes[4-ajuste]
+                        except:
+                            try:
+                                r.total = partes[4 - ajuste] #FALTA probar con coma decimal o punto decimal
+                            except:
+                                pass
+
+                        try:
                             r.total = partes[5-ajuste]
                         except:
                             try:
@@ -75,7 +83,8 @@ class account_bolivia_lector_qr(models.Model):
                             except:
                                 pass
                             # con descuento? r.total = partes[6]
-                        r.codigodecontrol = partes[7-ajuste]
+                        r.codigodecontrol = partes[6 - ajuste]
+                        r.nit_compania = partes[7 - ajuste]
                         #siempre 0? r. = partes[8]
                         #siempre 0? r. = partes[9]
                         #siempre 0? r. = partes[10]
@@ -148,6 +157,14 @@ class AccountMove(models.Model):
                                             r.invoice_date = ""
                                             # raise ValidationError('Error con la Fecha')
                         try:
+                            r.total_qr_referencial = partes[4 - ajuste]
+                        except:
+                            try:
+                                r.total_qr_referencial = partes[4 - ajuste]  # FALTA probar con coma decimal o punto decimal
+                            except:
+                                pass
+
+                        try:
                             r.total_qr_referencial = partes[5 - ajuste]
                         except:
                             try:
@@ -155,7 +172,8 @@ class AccountMove(models.Model):
                             except:
                                 pass
                             # con descuento? r.total = partes[6]
-                        r.codigodecontrol = partes[7 - ajuste]
+                        r.codigodecontrol = partes[6 - ajuste]
+                        #REVISAR SI NIT CUADRAr.codigodecontrol = partes[7 - ajuste]
                         # siempre 0? r. = partes[8]
                         # siempre 0? r. = partes[9]
                         # siempre 0? r. = partes[10]
