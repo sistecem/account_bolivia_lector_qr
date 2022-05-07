@@ -140,21 +140,22 @@ class AccountMove(models.Model):
                         r.ref = partes[1 - ajuste]
                         r.autorizacion = partes[2 - ajuste]
                         try:
-                            r.invoice_date = partes[3 - ajuste]
+                            r.invoice_date = r.date = partes[3 - ajuste]
                         except:
                             try:
-                                r.invoice_date = datetime.strptime(partes[3 - ajuste], '%d/%m/%Y')
+                                r.invoice_date = r.date = datetime.strptime(partes[3 - ajuste], '%d/%m/%Y')
                             except:
                                 try:
-                                    r.invoice_date = datetime.strptime(partes[3 - ajuste], '%d/%m/%y')
+                                    r.invoice_date = r.date = datetime.strptime(partes[3 - ajuste], '%d/%m/%y')
                                 except:
                                     try:
-                                        r.invoice_date = datetime.strptime(partes[3 - ajuste], '%m/%d/%y')
+                                        r.invoice_date = r.date = datetime.strptime(partes[3 - ajuste], '%m/%d/%y')
                                     except:
                                         try:
-                                            r.invoice_date = datetime.strptime(partes[3 - ajuste], '%m/%d/%Y')
+                                            r.invoice_date = r.date = datetime.strptime(partes[3 - ajuste], '%m/%d/%Y')
                                         except:
                                             r.invoice_date = ""
+                                            r.date = ""
                                             # raise ValidationError('Error con la Fecha')
                         try:
                             r.total_qr_referencial = partes[4 - ajuste]
