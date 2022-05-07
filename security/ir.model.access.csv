@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_bolivia_lector_qr_account_bolivia_lector_qr,account_bolivia_lector_qr.account_bolivia_lector_qr,model_account_bolivia_lector_qr_account_bolivia_lector_qr,base.group_user,1,1,1,1

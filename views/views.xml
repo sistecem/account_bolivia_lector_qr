@@ -1,0 +1,84 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="account_bolivia_lector_qr.list">
+      <field name="name">account_bolivia_lector_qr list</field>
+      <field name="model">account_bolivia_lector_qr.account_bolivia_lector_qr</field>
+      <field name="arch" type="xml">
+            <tree string="QR escaneados" editable="bottom" >
+                    <field name="name" widget="qr_code" options="{'need_confirm': false, 'autoplay':true , 'select':false}"/>
+                    <field name="date"/>
+                    <field name="nit"/>
+                    <field name="autorizacion"/>
+                    <field name="invoice_date"/>
+                    <field name="ref"/>
+                    <field name="codigodecontrol"/>
+                    <field name="descuentos"/>
+                    <field name="total"/>
+                    <field name="nit_compania"/>
+            </tree>
+      </field>
+
+    </record>
+
+    <record model="ir.ui.view" id="account_bolivia_lector_qr_form_view">
+            <field name="name">account_bolivia_lector_qr</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="codigodecontrolbolivia.account_invoice_codigocontrol_form_view"/>
+            <field name="arch" type="xml">
+                <field name="razonsocial" position="after">
+
+                    <field name="lector_qr" widget="qr_code" options="{'need_confirm': false, 'autoplay':true , 'select':false}"/>
+                    <field name="selector_qr"/>
+                    <field name="total_qr_referencial"/>
+				</field>
+
+            </field>
+
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="account_bolivia_lector_qr.action_window">
+      <field name="name">QR de Facturas de Compras por emparejar</field>
+      <field name="res_model">account_bolivia_lector_qr.account_bolivia_lector_qr</field>
+      <field name="view_mode">tree</field>
+      <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+           Escanea tu primera factura
+          </p>
+          <br/>
+          <p>
+            Usar tu teléfono para mejores resultados , <br/>mandánte el link por whatsapp
+            <br/><i>( Ctrl+L  seguido de Ctrl + C ) </i>.
+          </p>
+        </field>
+
+    </record>
+
+    <!-- server action to the one above -->
+<!--    <record model="ir.actions.server" id="account_bolivia_lector_qr.action_server">-->
+<!--      <field name="name">account_bolivia_lector_qr server</field>-->
+<!--      <field name="model_id" ref="model_account_bolivia_lector_qr_account_bolivia_lector_qr"/>-->
+<!--      <field name="state">code</field>-->
+<!--      <field name="code">-->
+<!--        action = {-->
+<!--          "type": "ir.actions.act_window",-->
+<!--          "view_mode": "tree,form",-->
+<!--          "res_model": model._name,-->
+<!--        }-->
+<!--      </field>-->
+<!--    </record>-->
+
+    <!-- Top menu item -->
+<!--    <menuitem name="account_bolivia_lector_qr" id="account_bolivia_lector_qr.menu_root"/>-->
+    <!-- menu categories -->
+    <menuitem name="QR" id="account_bolivia_lector_qr.menu_qr" parent="account.menu_finance" action="account_bolivia_lector_qr.action_window"/>
+
+    <!-- actions -->
+<!--    <menuitem name="List" id="account_bolivia_lector_qr.menu_1_list" parent="account_bolivia_lector_qr.menu_1"-->
+<!--              action="account_bolivia_lector_qr.action_window"/>-->
+<!--    <menuitem name="Server to list" id="account_bolivia_lector_qr" parent="account_bolivia_lector_qr.menu_2"-->
+<!--              action="account_bolivia_lector_qr.action_server"/>-->
+
+  </data>
+</odoo>
