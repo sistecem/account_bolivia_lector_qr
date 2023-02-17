@@ -27,10 +27,11 @@
             <field name="inherit_id" ref="codigodecontrolbolivia.account_invoice_codigocontrol_form_view"/>
             <field name="arch" type="xml">
                 <field name="razonsocial" position="after">
-
-                    <field name="lector_qr" widget="qr_code" options="{'need_confirm': false, 'autoplay':true , 'select':false}"/>
-                    <field name="selector_qr"/>
-                    <field name="total_qr_referencial"/>
+                    <field name="lector_qr" attrs="{'invisible': [('move_type', 'not in', ('in_invoice'))]}"
+                                            widget="qr_code"
+                                            options="{'need_confirm': false, 'autoplay':true , 'select':false}"/>
+                    <field name="selector_qr" attrs="{'invisible': [('move_type', 'not in', ('in_invoice'))]}"/>
+                    <field name="total_qr_referencial"  attrs="{'invisible': [('move_type', 'not in', ('in_invoice'))]}"/>
 				</field>
 
             </field>
